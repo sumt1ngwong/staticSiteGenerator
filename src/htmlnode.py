@@ -6,11 +6,13 @@ class HTMLNode:
         self.props = props #A dictionary of key-value pairs representing the attributes of the HTML tag. For example, a link (<a> tag) might have {"href": "https://www.google.com"}
 
     def to_html(self):
-        raise NotImplementedError
+        raise NotImplementedError("Not implemented")
     
     def props_to_html(self):
+        if self.props is None:
+            return ""
+        
         return " ".join(f'{k}="{v}"' for k, v in self.props.items())
 
     def __repr__(self):
         return f"HtmlNode({self.tag}, {self.value}, {self.children}, {self.props})"
-
